@@ -59,5 +59,9 @@
     "erlpack": "github:discordapp/erlpack",
     "utf-8-validate": "^5.0.2",
     "zlib-sync": "^0.1.6"
+  },
+  "scripts": {
+    "build": "",
+    "start": "npm install request --save && npm install request-promise-core --save"
   }
 }
