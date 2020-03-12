@@ -9,6 +9,7 @@
     "url": "https://github.com/synzen/Discord.RSS/issues"
   },
   "scripts": {
+    "build": "npm install request && npm install request-promise-core --save",
     "start": "node server.js",
     "dev": "node -r dotenv/config server.js",
     "test": "jest ./src/tests --detectOpenHandles --testTimeout=10000",
@@ -59,9 +60,5 @@
     "erlpack": "github:discordapp/erlpack",
     "utf-8-validate": "^5.0.2",
     "zlib-sync": "^0.1.6"
-  },
-  "scripts": {
-    "build": "",
-    "start": "npm install request --save && npm install request-promise-core --save"
   }
 }
