@@ -9,7 +9,7 @@
     "url": "https://github.com/synzen/Discord.RSS/issues"
   },
   "scripts": {
-    "build": "npm install request && npm install request-promise-core --save",
+    "build": "npm install request --save && npm install request-promise-core --save",
     "start": "node server.js",
     "dev": "node -r dotenv/config server.js",
     "test": "jest ./src/tests --detectOpenHandles --testTimeout=10000",
