@@ -78,7 +78,7 @@ module.exports = function (bot, message) {
       .setColor('#fffc2e')
       .setTitle(sterm)
       .setDescription("")
-      .setFooter('Trial');
+      .setFooter('Using Elwiki API');
       if(res[3].length === 0) {
           wikiEmbed.description += nresult;
           }
