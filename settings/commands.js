@@ -78,7 +78,7 @@ module.exports = function (bot, message) {
       .setColor('#fffc2e')
       .setTitle(sterm)
       .setDescription("")
-      .setFooter('DM errors/bugs to Ruru#9278.');
+      .setFooter('Trial');
       if(res[3].length === 0) {
           wikiEmbed.description += nresult;
           }
@@ -92,7 +92,9 @@ module.exports = function (bot, message) {
         
         
       }
-      
+     if(message.guild){
+     message.delete();
+     }
      message.channel.send(wikiEmbed);
     }
                );
