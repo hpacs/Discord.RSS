@@ -72,6 +72,7 @@ module.exports = function (bot, message) {
     const wikiurl = encodeURI(bwikiurl);
     var prom2 = getWiki(wikiurl);
     var i=0;
+    var put=0;
     var sterm = "Elwiki Results for " + term;
     var sresult;
     var nresult = "No results found";
@@ -82,17 +83,23 @@ module.exports = function (bot, message) {
       .setTitle(sterm)
       .setDescription("")
       .setFooter('Using Google API');
+      if(res.items.length === 0) {
+          wikiEmbed.description += nresult;
+          }
       try{
-          for(i=0;i<3; i++){
+          for(i=0;i<res.items.length && put<3 && i<10; i++){
             var x = res.items[i].url;
-            console.log(x);
+            if (x.startsWith("https://elwiki"){
+            put++;    
             wikiEmbed.description += x + "\n";
+                }
+            
              
           }
       }
       catch(error){
           console.log(error);
-          wikiEmbed.description += nresult;
+          wikiEmbed.description += "server error?";
       }
         
         
