@@ -39,9 +39,7 @@ const getServer = async sgame =>{
 
 
 module.exports = function (bot, message) {
-  if (GuildMemberRoleManager.cache(message.author.id).find('617627366063079434')) {
-    console.log("has role");
-  }
+  if(!(message.member.roles.find(r => r.name === "Moderator") || message.member.roles.find(r => rname === "Asst Mod"))) return;
   else if (message.author.bot) return;
   else if (message.content.startsWith("/kom")) {
       var prom1 = getData(url);
