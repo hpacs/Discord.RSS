@@ -99,11 +99,12 @@ module.exports = function (bot, message) {
       }
       catch(error){
           console.log(error);
-          wikiEmbed.description += "server error?";
       }
         
         
-      
+      if(put === 0){
+      wikiEmbed.description += nresult;
+      }
      if(message.guild){
      message.delete();
      }
