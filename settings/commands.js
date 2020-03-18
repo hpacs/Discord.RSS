@@ -53,6 +53,9 @@ module.exports = function (bot, message) {
       message.channel.send(exampleEmbed);
       }
                  );
+         if(message.guild){
+     message.delete();
+     }
   }
   else if (message.content.startsWith("/wiki ")){
     const term = message.content.slice(6);
