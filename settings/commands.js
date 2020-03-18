@@ -39,8 +39,7 @@ const getServer = async sgame =>{
 
 
 module.exports = function (bot, message) {
-  if(!(message.member.roles.find(r => r.name === "Moderator") || message.member.roles.find(r => rname === "Asst Mod"))) return;
-  else if (message.author.bot) return;
+  if (message.author.bot) return;
   else if (message.content.startsWith("/kom")) {
       var prom1 = getData(url);
       prom1.then(function(msg){
@@ -59,6 +58,10 @@ module.exports = function (bot, message) {
      }
   }
   else if (message.content.startsWith("/wiki ")){
+      if(message.guild){
+      if(!(message.member.roles.find(r => r.name === "Moderator") || message.member.roles.find(r => rname === "Asst Mod"))) return;
+     message.delete();
+     }
     const term = message.content.slice(6);
     console.log(term);
     var splitStr = term.toLowerCase().split(' ');
@@ -106,9 +109,6 @@ module.exports = function (bot, message) {
       if(put === 0){
       wikiEmbed.description += nresult;
       }
-     if(message.guild){
-     message.delete();
-     }
      message.channel.send(wikiEmbed);
     }
                );
