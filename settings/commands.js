@@ -65,7 +65,7 @@ module.exports = function (bot, message) {
    }
    // Directly return the joined string
     var nterm = splitStr.join(' '); 
-    const bwikiurl = "https://elwiki.net/wiki/api.php?action=opensearch&format=json&search=" + nterm + "&limit=3";
+    const bwikiurl = "http://twitterbridge.herokuapp.com/?action=display&bridge=GoogleSearch&q=elwiki+" + nterm + "&format=Json";
     const wikiurl = encodeURI(bwikiurl);
     var prom2 = getWiki(wikiurl);
     var i=0;
@@ -78,13 +78,13 @@ module.exports = function (bot, message) {
       .setColor('#fffc2e')
       .setTitle(sterm)
       .setDescription("")
-      .setFooter('Using Elwiki API');
-      if(res[3].length === 0) {
+      .setFooter('Using Google API');
+      if(res.items.length === 0) {
           wikiEmbed.description += nresult;
           }
       else{
-          for(i=0;i<res[3].length; i++){
-            var x = res[3][i];
+          for(i=0;i<3; i++){
+            var x = res.items[i].url;
             console.log(x);
             wikiEmbed.description += x + "\n";
              
