@@ -82,19 +82,21 @@ module.exports = function (bot, message) {
       .setTitle(sterm)
       .setDescription("")
       .setFooter('Using Google API');
-      if(res.items.length === 0) {
-          wikiEmbed.description += nresult;
-          }
-      else{
+      try{
           for(i=0;i<3; i++){
             var x = res.items[i].url;
             console.log(x);
             wikiEmbed.description += x + "\n";
              
           }
-        
-        
       }
+      catch(error){
+          console.log(error);
+          wikiEmbed.description += nresult;
+      }
+        
+        
+      
      if(message.guild){
      message.delete();
      }
