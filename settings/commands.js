@@ -89,7 +89,7 @@ module.exports = function (bot, message) {
       try{
           for(i=0;i<res.items.length && put<3 && i<10; i++){
             var x = res.items[i].url;
-            if (x.startsWith("https://elwiki"){
+            if (x.startsWith("https://elwiki")){
             put++;    
             wikiEmbed.description += x + "\n";
                 }
