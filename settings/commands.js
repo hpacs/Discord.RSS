@@ -38,7 +38,7 @@ const getServer = async sgame =>{
 async function replyWithInvite(msg) {
   let invite = await msg.channel.createInvite(
   {
-    maxAge: 43200, // maximum time for the invite, in milliseconds
+    maxAge: 863400, // maximum time for the invite, in milliseconds
     maxUses: 1, // maximum times it can be used
     unique: true
   },
