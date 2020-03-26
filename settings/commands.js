@@ -40,16 +40,17 @@ const getServer = async sgame =>{
 
 module.exports = function (bot, message) {
   if (message.author.bot) return;
-    else if (message.content.startsWith("/inv")){
-      if(!(message.member.roles.find(r => r.name === "Moderator") || message.member.roles.find(r => rname === "Asst Mod"))) return;
-              let invite = await message.channel.createInvite({
+  else if (message.content.startsWith("/inv")){
+  let invite = await message.channel.createInvite({
             maxTime: 10*60*1000,
-            maxUses: 1
+            maxUses: 1,
+            unique: true
         },
         `Requested with command by ${message.author.tag}`).catch(console.log);
 
         message.channel.send(`<@${message.author.id}>, here is your invite link: ${invite}`);
-    }
+  }
+
   else if (message.content.startsWith("/kom")) {
       var prom1 = getData(url);
       prom1.then(function(msg){
