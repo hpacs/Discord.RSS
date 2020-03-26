@@ -11,7 +11,7 @@ async function replyWithInvite(msg) {
 }
   
 module.exports = function (bot, message) {
-  if (msg.content.startsWith('!inv')) {
+  if (message.content.startsWith('!inv')) {
     replyWithInvite(message);
   }
 }
