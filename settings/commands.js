@@ -40,6 +40,18 @@ const getServer = async sgame =>{
 
 module.exports = function (bot, message) {
   if (message.author.bot) return;
+  
+  else if (message.content.startswith("/geninv")){
+  if(!(message.member.roles.find(r => r.name === "Moderator") || message.member.roles.find(r => rname === "Asst Mod"))) return;
+   message.channel.createInvite(
+     {
+       maxAge:10*60*1000,
+       maxUses:1,
+       unique:true
+     })
+    .then(invite => message.channel.send(`Here's your invite ${invite}`))
+    .catch(console.error);
+   }
 
   else if (message.content.startsWith("/kom")) {
       var prom1 = getData(url);
