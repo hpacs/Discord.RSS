@@ -37,9 +37,26 @@ const getServer = async sgame =>{
 };
 
 
+async function replyWithInvite(message) {
+  let invite = await message.channel.createInvite(
+  {
+    maxAge: 36000, // maximum time for the invite, in milliseconds
+    maxUses: 1, // maximum times it can be used
+    unique: true
+  },
+)
+.catch(console.log);
+
+  message.reply(invite ? `Here's your invite: ${invite}` : "There has been an error during the creation of the invite.");
+}
+
 
 module.exports = function (bot, message) {
   if (message.author.bot) return;
+  else if (message.content.startswith("/inv")){
+  if(!(message.member.roles.find(r => r.name === "Moderator") || message.member.roles.find(r => rname === "Asst Mod"))) return;
+  replyWithInvite(message);
+  }
   else if (message.content.startsWith("/kom")) {
       var prom1 = getData(url);
       prom1.then(function(msg){
