@@ -2,7 +2,6 @@ const fetch = require("node-fetch");
 const Discord = require('discord.js');
 const url = "http://gamepatch.elswordonline.com/PatchPath.dat";
 const sgame = "https://api.koggames.com/Server/CheckGameStat.ashx";
-
 const getData = async url => {
   try {
     const response = await fetch(url);
@@ -40,24 +39,17 @@ const getServer = async sgame =>{
 
 
 module.exports = function (bot, message) {
-async function replyWithInvite(message) {
-  let invite = await message.channel.createInvite(
-  {
-    maxAge: 10 * 60 * 1000, // maximum time for the invite, in milliseconds
-    maxUses: 1 // maximum times it can be used
-  },
-  `Requested with command by ${message.author.tag}`
-)
-.catch(console.log);
-
-  message.reply(invite ? `Here's your invite: ${invite}` : "There has been an error during the creation of the invite.");
-}
   if (message.author.bot) return;
-  else if (message.content.startswith("/inv")) {
-    if(!(message.member.roles.find(r => r.name === "Moderator") || message.member.roles.find(r => rname === "Asst Mod"))) return;
-     replyWithInvite(message);
+    else if (message.content.startsWith("/inv")){
+      if(!(message.member.roles.find(r => r.name === "Moderator") || message.member.roles.find(r => rname === "Asst Mod"))) return;
+              let invite = await message.channel.createInvite({
+            maxTime: 10*60*1000,
+            maxUses: 1
+        },
+        `Requested with command by ${message.author.tag}`).catch(console.log);
 
-           }
+        message.channel.send(`<@${message.author.id}>, here is your invite link: ${invite}`);
+    }
   else if (message.content.startsWith("/kom")) {
       var prom1 = getData(url);
       prom1.then(function(msg){
