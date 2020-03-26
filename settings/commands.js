@@ -2,19 +2,6 @@ const fetch = require("node-fetch");
 const Discord = require('discord.js');
 const url = "http://gamepatch.elswordonline.com/PatchPath.dat";
 const sgame = "https://api.koggames.com/Server/CheckGameStat.ashx";
-const createinvite = async message => {
-   let invite = await message.channel.createInvite(
-  {
-    maxAge: 10 * 60 * 1000, // maximum time for the invite, in milliseconds
-    maxUses: 1, // maximum times it can be used
-    unique: true
-  },
-  `Requested with command by ${message.author.tag}`
-)
-.catch(console.log);
-
-  message.reply(invite ? `Here's your invite: ${invite}` : "There has been an error during the creation of the invite.");
-};
 const getData = async url => {
   try {
     const response = await fetch(url);
@@ -53,12 +40,6 @@ const getServer = async sgame =>{
 
 module.exports = function (bot, message) {
   if (message.author.bot) return;
-  
-  else if (message.content.startswith("/geninv")){
-  if(!(message.member.roles.find(r => r.name === "Moderator") || message.member.roles.find(r => rname === "Asst Mod"))) return;
-    createinvite(message);
-  }
-
   else if (message.content.startsWith("/kom")) {
       var prom1 = getData(url);
       prom1.then(function(msg){
@@ -85,8 +66,6 @@ module.exports = function (bot, message) {
     console.log(term);
     var splitStr = term.toLowerCase().split(' ');
     for (var i = 0; i < splitStr.length; i++) {
-       // You do not need to check if i is larger than splitStr length, as your for does that for you
-       // Assign it back to the array
        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
    }
    // Directly return the joined string
@@ -116,25 +95,16 @@ module.exports = function (bot, message) {
             put++;    
             wikiEmbed.description += x + "\n";
                 }
-            
-             
           }
       }
       catch(error){
           console.log(error);
       }
-        
-        
       if(put === 0){
       wikiEmbed.description += nresult;
       }
      message.channel.send(wikiEmbed);
     }
                );
-
-  
-
-  
-  
   }
 }
