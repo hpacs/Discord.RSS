@@ -76,10 +76,10 @@ module.exports = function (bot, message) {
      }
   }
   else if (message.content.startsWith("/wiki ")){
-      if(message.guild){
-      if(!(message.member.roles.find(r => r.name === "Moderator") || message.member.roles.find(r => rname === "Asst Mod"))) return;
-     message.delete();
-     }
+    //  if(message.guild){
+    //  if(!(message.member.roles.find(r => r.name === "Moderator") || message.member.roles.find(r => rname === "Asst Mod"))) return;
+    // message.delete();
+    // }
     const term = message.content.slice(6);
     console.log(term);
     var splitStr = term.toLowerCase().split(' ');
