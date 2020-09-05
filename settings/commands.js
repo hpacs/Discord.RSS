@@ -62,7 +62,7 @@ module.exports = function (bot, message) {
       var prom1 = getData(url);
       prom1.then(function(msg){
       var nmsg = msg.slice(1,-1);
-      var fmsg = nmsg + "/data/data001.kom";
+      var fmsg = nmsg + "data/data001.kom";
       const exampleEmbed = new Discord.RichEmbed()
         .setColor('#0099ff')
         .setTitle('LINK TO DOWNLOAD INDIVIDUAL .KOM FILES')
